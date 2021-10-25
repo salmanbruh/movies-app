@@ -1,14 +1,26 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:home/home.dart';
+import 'package:movies_app/ui/splash/splash_page.dart';
+import 'package:shared/common/common.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [];
 
+  Widget get view => const MyApp();
+
   @override
-  List<ModularRoute> get routes => [];
+  List<ModularRoute> get routes => [
+        ChildRoute(
+          Modular.get<NamedRoutes>().splashPage,
+          child: (context, args) => const SplashPage(),
+        ),
+        ModuleRoute(
+          Modular.get<NamedRoutes>().homePage,
+          module: FeatureHomeModule(),
+        ),
+      ];
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +28,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      builder: (context, child) {
+        return Material(
+          child: child,
+        );
+      },
+      initialRoute: Modular.get<NamedRoutes>().splashPage,
+    ).modular();
   }
 }

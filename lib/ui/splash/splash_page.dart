@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:shared/common/common.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -8,6 +12,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    _startSplashScreen();
+  }
+
   @override
   Widget build(BuildContext context) {
     return _buildBody(context);
@@ -25,5 +35,14 @@ class _SplashPageState extends State<SplashPage> {
         ),
       ),
     );
+  }
+
+  _startSplashScreen() async {
+    const _duration = Duration(seconds: 3);
+    return Timer(_duration, _navigationPage);
+  }
+
+  void _navigationPage() {
+    Modular.to.pushReplacementNamed(Modular.get<NamedRoutes>().homePage);
   }
 }
