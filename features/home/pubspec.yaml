@@ -14,6 +14,8 @@ dependencies:
 
   dependencies:
     path: ../../libraries/dependencies
+  shared:
+    path: ../../libraries/shared
 
 dev_dependencies:
   flutter_test:

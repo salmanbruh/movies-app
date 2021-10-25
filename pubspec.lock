@@ -165,6 +165,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.1"
+  shared:
+    dependency: "direct main"
+    description:
+      path: "libraries/shared"
+      relative: true
+    source: path
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
