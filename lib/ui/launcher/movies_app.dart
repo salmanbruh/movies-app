@@ -6,9 +6,9 @@ import 'package:shared/common/common.dart';
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
-
-  Widget get view => const MyApp();
+  List<Bind> get binds => [
+        Bind((_) => NamedRoutes()),
+      ];
 
   @override
   List<ModularRoute> get routes => [
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
+      title: "Movies App",
       initialRoute: Modular.get<NamedRoutes>().splashPage,
     ).modular();
   }
