@@ -18,7 +18,7 @@ void main() async {
     description: "",
     baseUrl: "",
     themeData: ThemeData(),
-    child: modularApp,
+    app: modularApp,
   );
   runApp(appConfig);
 }
