@@ -8,11 +8,11 @@ import 'package:movies_app/ui/launcher/movies_app.dart';
 void main() async {
   Bloc.observer = MoviesBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  var modularApp = ModularApp(
+  final modularApp = ModularApp(
     module: AppModule(),
     child: const MyApp(),
   );
-  var appConfig = AppConfig(
+  final appConfig = AppConfig(
     appEnvironment: AppEnvironment.PRODUCTION,
     appName: "Movies",
     description: "",
