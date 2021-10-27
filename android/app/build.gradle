@@ -61,12 +61,15 @@ android {
     flavorDimensions "default"
 
     productFlavors {
-        development {
+        dev {
             dimension "default"
             applicationIdSuffix ".dev"
+            versionaNameSuffix "-dev"
+            resValue "string", "app_name", "Movies-dev"
         }
-        production {
+        prod {
             dimension "default"
+            resValue "string", "app_name", "Movies"
         }
     }
 }
