@@ -49,7 +49,7 @@ jobs:
       - run: flutter pub get
       - run: flutter clean
       - run: flutter analyze .
-      - run: flutter build ipa --target lib/ui/launcher/main_prod.dart
+      - run: flutter build ipa --no-codesign --target lib/ui/launcher/main_prod.dart
       - name: Upload iPA
         uses: actions/upload-artifact@v2.2.4
         with:
