@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 enum AppEnvironment {
-  DEVELOPMENT,
-  PRODUCTION,
+  development,
+  production,
 }
 
 class AppConfig extends InheritedWidget {
