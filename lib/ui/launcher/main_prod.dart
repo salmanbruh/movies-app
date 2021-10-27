@@ -13,12 +13,12 @@ void main() async {
     child: const MyApp(),
   );
   final appConfig = AppConfig(
-    appEnvironment: AppEnvironment.PRODUCTION,
+    appEnvironment: AppEnvironment.production,
     appName: "Movies",
     description: "",
     baseUrl: "",
     themeData: ThemeData(),
-    child: modularApp,
+    app: modularApp,
   );
   runApp(appConfig);
 }

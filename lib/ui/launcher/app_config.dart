@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 enum AppEnvironment {
-  DEVELOPMENT,
-  PRODUCTION,
+  development,
+  production,
 }
 
 class AppConfig extends InheritedWidget {
@@ -11,17 +11,17 @@ class AppConfig extends InheritedWidget {
   final String description;
   final String baseUrl;
   final ThemeData themeData;
-  final Widget child;
+  final Widget app;
 
-  AppConfig({
+  const AppConfig({
     required this.appEnvironment,
     required this.appName,
     required this.description,
     required this.baseUrl,
     required this.themeData,
-    required this.child,
+    required this.app,
     Key? key,
-  }) : super(key: key, child: child);
+  }) : super(key: key, child: app);
 
   static AppConfig? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<AppConfig>();
