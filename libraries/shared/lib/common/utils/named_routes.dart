@@ -1,5 +1,10 @@
 class NamedRoutes {
-  String splashPage = "/splash";
+  // Roots
+  String root = "/";
 
-  String homePage = "/home";
+  // Launcher
+  String splashPage = "/splash/";
+
+  // Home feature
+  String homePage = "/home/";
 }
