@@ -1,16 +1,24 @@
-# movies_app
+# Movies App
 
-A new Flutter project.
+Flutter-based Movies mobile application as a personal project to learn mobile development.
 
-## Getting Started
+## Design Reference
 
-This project is a starting point for a Flutter application.
+Application UI is referenced from Vladimir Gubanov's Movies App design: https://dribbble.com/shots/9527363-Movie-App
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Features of this app include:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Home Screen:
+  - Movies List
+  - Search Movie/s
+  - User Info
+  - Notifications
+- Favorites Screen:
+  - User favorite movies list
+- Movie Detail Screen
+  - A screen of detailed information of a movie
+- Booking Screen
+  - Locally managed seat booking for a certain movie
+
