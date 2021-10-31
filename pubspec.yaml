@@ -17,6 +17,8 @@ dependencies:
     path: features/home
 
   # Libraries
+  core:
+    path: libraries/core
   dependencies:
     path: libraries/dependencies
   shared:

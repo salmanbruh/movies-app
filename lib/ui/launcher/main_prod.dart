@@ -1,3 +1,5 @@
+import 'package:core/core.dart';
+import 'package:core/network/api_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,14 +11,16 @@ void main() async {
   Bloc.observer = MoviesBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   final modularApp = ModularApp(
-    module: AppModule(),
+    module: AppModule(
+      baseUrl: ApiConstant.baseUrlProd,
+    ),
     child: const MyApp(),
   );
   final appConfig = AppConfig(
     appEnvironment: AppEnvironment.production,
     appName: "Movies",
     description: "",
-    baseUrl: "",
+    baseUrl: ApiConstant.baseUrlProd,
     themeData: ThemeData(),
     app: modularApp,
   );
