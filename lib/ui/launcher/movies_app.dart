@@ -2,6 +2,7 @@ import 'package:core/network/dio_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:home/home.dart';
+import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_app/ui/splash/splash_page.dart';
 import 'package:shared/common/common.dart';
 
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
       title: "Movies App",
       initialRoute: Modular.get<NamedRoutes>().splashPage,
       theme: theme,
+      debugShowCheckedModeBanner:
+          AppConfig.of(context).appEnvironment == AppEnvironment.development
+              ? true
+              : false,
     ).modular();
   }
 }

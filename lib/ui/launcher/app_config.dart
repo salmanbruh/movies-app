@@ -23,8 +23,8 @@ class AppConfig extends InheritedWidget {
     Key? key,
   }) : super(key: key, child: app);
 
-  static AppConfig? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AppConfig>();
+  static AppConfig of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<AppConfig>() as AppConfig;
   }
 
   @override
