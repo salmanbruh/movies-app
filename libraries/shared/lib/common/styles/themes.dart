@@ -75,6 +75,13 @@ ThemeData theme = ThemeData(
     background: Modular.get<ColorPalettes>().darkBG,
     brightness: Brightness.dark,
   ),
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    iconTheme: IconThemeData(
+      color: Modular.get<ColorPalettes>().lightPrimary,
+    ),
+  ),
   textTheme: _textTheme,
   buttonTheme: ButtonThemeData(
     buttonColor: Modular.get<ColorPalettes>().darkAccent,
