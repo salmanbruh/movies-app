@@ -12,6 +12,7 @@ class AppModule extends Module {
 
   @override
   List<Bind> get binds => [
+        Bind((_) => ColorPalettes()),
         Bind((_) => NamedRoutes()),
         Bind((_) => DioClient(apiBaseUrl: baseUrl)),
       ];
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
       },
       title: "Movies App",
       initialRoute: Modular.get<NamedRoutes>().splashPage,
+      theme: theme,
     ).modular();
   }
 }
