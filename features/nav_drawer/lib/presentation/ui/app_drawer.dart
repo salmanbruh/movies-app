@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nav_drawer/presentation/bloc/appdrawer_bloc.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -20,6 +21,7 @@ class AppDrawer extends StatelessWidget {
                     leading: const Icon(Icons.home),
                     title: const Text("Home"),
                     onTap: () {
+                      Modular.to.pop(context);
                       BlocProvider.of<AppdrawerBloc>(context)
                           .add(MoviesListPageEvent());
                     },
@@ -28,6 +30,7 @@ class AppDrawer extends StatelessWidget {
                     leading: const Icon(Icons.favorite),
                     title: const Text("Favorites"),
                     onTap: () {
+                      Modular.to.pop(context);
                       BlocProvider.of<AppdrawerBloc>(context)
                           .add(FavoritesPageEvent());
                     },

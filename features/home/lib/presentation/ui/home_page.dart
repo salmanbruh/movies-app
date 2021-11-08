@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:favorites_list/favorites_list.dart';
 import 'package:movies_list/movies_list.dart';
 import 'package:nav_drawer/nav_drawer.dart';
