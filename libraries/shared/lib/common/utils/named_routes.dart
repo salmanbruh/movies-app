@@ -7,4 +7,7 @@ class NamedRoutes {
 
   // Home feature
   String homePage = "/home/";
+
+  // Movies List
+  String moviesList = "/list/";
 }

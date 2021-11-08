@@ -12,6 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  nav_drawer:
+    path: ../nav_drawer
+  movies_list:
+    path: ../movies_list
+  favorites_list:
+    path: ../favorites_list
+
   dependencies:
     path: ../../libraries/dependencies
   shared:

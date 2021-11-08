@@ -1,6 +1,7 @@
-name: dependencies
+name: favorites_list
 description: A new Flutter package project.
 version: 0.0.1
+publish_to: none
 homepage:
 
 environment:
@@ -8,19 +9,23 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  bloc: ^7.2.1
-  dio: ^4.0.1
-  equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.1
-  flutter_modular: ^4.1.2
+
+  dependencies:
+    path: ../../libraries/dependencies
+  shared:
+    path: ../../libraries/shared
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
 
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
 flutter:
 
   # To add assets to your package, add an assets section, like this:

@@ -15,6 +15,12 @@ dependencies:
   # Features
   home:
     path: features/home
+  movies_list:
+    path: features/movies_list
+  favorites_list:
+    path: features/favorites_list
+  nav_drawer:
+    path: features/nav_drawer
 
   # Libraries
   core:
