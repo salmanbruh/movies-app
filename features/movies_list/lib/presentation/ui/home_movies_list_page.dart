@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MoviesListPage extends StatefulWidget {
-  const MoviesListPage({Key? key}) : super(key: key);
+class HomeMoviesListPage extends StatefulWidget {
+  const HomeMoviesListPage({Key? key}) : super(key: key);
 
   @override
   _MoviesListState createState() => _MoviesListState();
 }
 
-class _MoviesListState extends State<MoviesListPage> {
+class _MoviesListState extends State<HomeMoviesListPage> {
   @override
   Widget build(BuildContext context) {
     return const Center(

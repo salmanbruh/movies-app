@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             if (state == AppdrawerState.favoritesPage) {
               return const FavoritesListPage();
             } else {
-              return const MoviesListPage();
+              return const HomeMoviesListPage();
             }
           },
         ),
