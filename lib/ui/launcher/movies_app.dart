@@ -15,7 +15,7 @@ class AppModule extends Module {
   List<Bind> get binds => [
         Bind((_) => ColorPalettes()),
         Bind((_) => NamedRoutes()),
-        Bind((_) => DioClient(apiBaseUrl: baseUrl)),
+        Bind((_) => DioClient(baseUrl: baseUrl)),
       ];
 
   @override

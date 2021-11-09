@@ -3,15 +3,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class DioClient {
-  final String apiBaseUrl;
+  final String baseUrl;
 
-  DioClient({required this.apiBaseUrl});
+  DioClient({required this.baseUrl});
 
   Dio get dio => _getDio();
 
   Dio _getDio() {
     BaseOptions options = BaseOptions(
-      baseUrl: apiBaseUrl,
+      baseUrl: baseUrl,
       connectTimeout: 50000,
       receiveTimeout: 30000,
     );
