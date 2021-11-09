@@ -1,1 +1,1 @@
-export 'presentation/ui/movies_list_page.dart';
+export 'presentation/ui/home_movies_list_page.dart';
