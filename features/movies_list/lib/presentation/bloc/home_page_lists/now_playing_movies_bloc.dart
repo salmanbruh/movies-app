@@ -15,7 +15,7 @@ class NowPlayingMoviesBloc
 
   NowPlayingMoviesBloc({
     required this.moviesUseCase,
-  }) : super(Initial());
+  }) : super(NowPlayingMoviesInitial());
 
   @override
   Stream<NowPlayingMoviesState> mapEventToState(
@@ -27,19 +27,21 @@ class NowPlayingMoviesBloc
 
   Stream<NowPlayingMoviesState> _loadNowPlayingMovies() async* {
     try {
-      yield Loading();
+      yield NowPlayingMoviesLoading();
       var movies = await moviesUseCase.getNowPlayingMovies(1);
       if (movies.isEmpty) {
-        yield NoData(message: "No Data");
+        yield NowPlayingMoviesNoData(message: "No Data");
       } else {
-        yield HasData(data: movies);
+        yield NowPlayingMoviesHasData(data: movies);
       }
     } on IOException {
-      yield NoInternetConnection(message: "No Internet Connection");
+      yield NowPlayingMoviesNoInternetConnection(
+          message: "No Internet Connection");
     } on TimeoutException {
-      yield NoInternetConnection(message: "No Internet Connection");
+      yield NowPlayingMoviesNoInternetConnection(
+          message: "No Internet Connection");
     } catch (e) {
-      yield Error(message: e.toString());
+      yield NowPlayingMoviesError(message: e.toString());
     }
   }
 }

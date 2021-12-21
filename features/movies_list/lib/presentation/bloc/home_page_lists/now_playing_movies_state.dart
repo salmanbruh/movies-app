@@ -5,41 +5,41 @@ abstract class NowPlayingMoviesState extends Equatable {
   List<Object> get props => [];
 }
 
-class Initial extends NowPlayingMoviesState {}
+class NowPlayingMoviesInitial extends NowPlayingMoviesState {}
 
-class Loading extends NowPlayingMoviesState {}
+class NowPlayingMoviesLoading extends NowPlayingMoviesState {}
 
-class NoData extends NowPlayingMoviesState {
+class NowPlayingMoviesNoData extends NowPlayingMoviesState {
   final String message;
 
-  NoData({required this.message});
+  NowPlayingMoviesNoData({required this.message});
 
   @override
   List<Object> get props => [message];
 }
 
-class HasData extends NowPlayingMoviesState {
+class NowPlayingMoviesHasData extends NowPlayingMoviesState {
   final List<MovieEntity> data;
 
-  HasData({required this.data});
+  NowPlayingMoviesHasData({required this.data});
 
   @override
   List<Object> get props => [data];
 }
 
-class NoInternetConnection extends NowPlayingMoviesState {
+class NowPlayingMoviesNoInternetConnection extends NowPlayingMoviesState {
   final String message;
 
-  NoInternetConnection({required this.message});
+  NowPlayingMoviesNoInternetConnection({required this.message});
 
   @override
   List<Object> get props => [message];
 }
 
-class Error extends NowPlayingMoviesState {
+class NowPlayingMoviesError extends NowPlayingMoviesState {
   final String message;
 
-  Error({required this.message});
+  NowPlayingMoviesError({required this.message});
 
   @override
   List<Object> get props => [message];

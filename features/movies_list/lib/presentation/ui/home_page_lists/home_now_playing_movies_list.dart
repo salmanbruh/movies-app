@@ -32,7 +32,7 @@ class _HomeNowPlayingMoviesListState extends State<HomeNowPlayingMoviesList> {
   Widget _nowPlayingList(BuildContext context) {
     return BlocBuilder<NowPlayingMoviesBloc, NowPlayingMoviesState>(
       builder: (context, state) {
-        if (state is HasData) {
+        if (state is NowPlayingMoviesHasData) {
           List moviesList = state.props[0] as List;
           return ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -42,13 +42,13 @@ class _HomeNowPlayingMoviesListState extends State<HomeNowPlayingMoviesList> {
               return HomePageMovieCard(movie: movie);
             },
           );
-        } else if (state is Loading) {
+        } else if (state is NowPlayingMoviesLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is Error) {
+        } else if (state is NowPlayingMoviesError) {
           return Center(child: Text(state.message));
-        } else if (state is NoData) {
+        } else if (state is NowPlayingMoviesNoData) {
           return Center(child: Text(state.message));
-        } else if (state is NoInternetConnection) {
+        } else if (state is NowPlayingMoviesNoInternetConnection) {
           return Center(child: Text(state.message));
         } else {
           return const Text("Unknown Error");
