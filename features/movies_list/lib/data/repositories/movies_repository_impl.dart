@@ -10,11 +10,38 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
   @override
   Future<List<MovieEntity>> getNowPlayingMovies(int page) async {
-    List<MovieEntity> movieEntities = [];
-
     MovieResultModel movies = await moviesDataSource.getNowPlayingMovies(page);
 
-    for (var data in movies.movies) {
+    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+
+    return movieEntities;
+  }
+
+  @override
+  Future<List<MovieEntity>> getPopularMovies(int page) async {
+    MovieResultModel movies = await moviesDataSource.getUpcomingMovies(page);
+
+    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+
+    return movieEntities;
+  }
+
+  @override
+  Future<List<MovieEntity>> getTopRatedMovies(int page) {
+    // TODO: implement getTopRatedMovies
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<MovieEntity>> getUpcomingMovies(int page) {
+    // TODO: implement getUpcomingMovies
+    throw UnimplementedError();
+  }
+
+  List<MovieEntity> _extractMovieEntities(MovieResultModel movieResultModel) {
+    List<MovieEntity> movieEntities = [];
+
+    for (var data in movieResultModel.movies) {
       var movie = MovieEntity(
         genres: data.genres ?? "",
         title: data.title,
@@ -28,23 +55,5 @@ class MoviesRepositoryImpl extends MoviesRepository {
     }
 
     return movieEntities;
-  }
-
-  @override
-  Future<List<MovieEntity>> getPopularMovies() {
-    // TODO: implement getPopularMovies
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<MovieEntity>> getTopRatedMovies() {
-    // TODO: implement getTopRatedMovies
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<MovieEntity>> getUpcomingMovies() {
-    // TODO: implement getUpcomingMovies
-    throw UnimplementedError();
   }
 }

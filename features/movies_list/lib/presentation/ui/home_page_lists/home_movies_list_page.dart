@@ -17,11 +17,11 @@ class _MoviesListState extends State<HomeMoviesListPage> {
         children: const [
           HomeNowPlayingMoviesList(),
           Divider(),
+          HomeUpcomingMoviesList(),
+          Divider(),
           HomePopularMoviesList(),
           Divider(),
           HomeTopRatedMoviesList(),
-          Divider(),
-          HomeUpcomingMoviesList(),
         ],
       ),
     );

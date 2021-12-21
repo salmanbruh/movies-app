@@ -1,4 +1,8 @@
 part of 'upcoming_movies_bloc.dart';
 
-@immutable
-abstract class UpcomingMoviesEvent {}
+abstract class UpcomingMoviesEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class UpcomingMoviesLoadData extends UpcomingMoviesEvent {}

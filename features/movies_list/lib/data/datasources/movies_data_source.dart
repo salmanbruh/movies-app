@@ -5,6 +5,7 @@ import 'package:shared/common/common.dart';
 
 abstract class MoviesDataSource {
   Future<MovieResultModel> getNowPlayingMovies(int page);
+  Future<MovieResultModel> getUpcomingMovies(int page);
 }
 
 class TmdbApi extends MoviesDataSource {
@@ -17,6 +18,22 @@ class TmdbApi extends MoviesDataSource {
     try {
       Response response = await dioClient.dio.get(
         "/movie/now_playing",
+        queryParameters: {
+          "api_key": Keys.tmdbKey,
+          "page": page,
+        },
+      );
+      return MovieResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return e.error;
+    }
+  }
+
+  @override
+  Future<MovieResultModel> getUpcomingMovies(int page) async {
+    try {
+      Response response = await dioClient.dio.get(
+        "/movie/upcoming",
         queryParameters: {
           "api_key": Keys.tmdbKey,
           "page": page,
