@@ -10,6 +10,7 @@ class AppConfig extends InheritedWidget {
   final String appName;
   final String description;
   final String baseUrl;
+  final String baseImageUrl;
   final ThemeData themeData;
   final Widget app;
 
@@ -18,6 +19,7 @@ class AppConfig extends InheritedWidget {
     required this.appName,
     required this.description,
     required this.baseUrl,
+    required this.baseImageUrl,
     required this.themeData,
     required this.app,
     Key? key,

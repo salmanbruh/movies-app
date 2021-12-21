@@ -1,1 +1,2 @@
-export 'presentation/ui/home_movies_list_page.dart';
+export 'presentation/ui/movies_lists.dart';
+export 'domain/domain.dart';

@@ -28,6 +28,7 @@ class DioClient {
           "-- headers --\n"
           "${options.headers.toString()} \n"
           "");
+      handler.next(options);
     }, onResponse: (Response response, ResponseInterceptorHandler handler) {
       if (response.statusCode == 200) {
         debugPrint("\n"
@@ -36,12 +37,15 @@ class DioClient {
             "${response.headers.toString()} \n"
             "-- payload -- \n"
             "${jsonEncode(response.data)} \n"
+            "-- END RESPONSE --"
             "");
       } else {
         debugPrint("Dio Response Status --> ${response.statusCode}");
       }
+      handler.next(response);
     }, onError: (DioError e, ErrorInterceptorHandler handler) {
       debugPrint("Dio Response Error --> $e");
+      handler.next(e);
     });
   }
 }

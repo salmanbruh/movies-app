@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:favorites_list/favorites_list.dart';
-import 'package:movies_list/movies_list.dart';
+import 'package:movies_list/presentation/ui/movies_lists.dart';
 import 'package:nav_drawer/nav_drawer.dart';
 import 'package:nav_drawer/presentation/bloc/appdrawer_bloc.dart';
 

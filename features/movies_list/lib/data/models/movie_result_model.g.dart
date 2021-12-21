@@ -11,9 +11,11 @@ MovieResultModel _$MovieResultModelFromJson(Map<String, dynamic> json) =>
       movies: (json['results'] as List<dynamic>)
           .map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      totalPages: json['total_pages'] as int,
     );
 
 Map<String, dynamic> _$MovieResultModelToJson(MovieResultModel instance) =>
     <String, dynamic>{
       'results': instance.movies,
+      'total_pages': instance.totalPages,
     };

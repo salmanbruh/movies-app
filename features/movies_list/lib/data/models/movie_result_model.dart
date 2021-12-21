@@ -8,7 +8,13 @@ class MovieResultModel {
   @JsonKey(name: "results")
   final List<MovieModel> movies;
 
-  MovieResultModel({required this.movies});
+  @JsonKey(name: "total_pages")
+  final int totalPages;
+
+  MovieResultModel({
+    required this.movies,
+    required this.totalPages,
+  });
 
   factory MovieResultModel.fromJson(Map<String, dynamic> json) =>
       _$MovieResultModelFromJson(json);

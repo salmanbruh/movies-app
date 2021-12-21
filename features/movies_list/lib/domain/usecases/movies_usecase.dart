@@ -2,10 +2,10 @@ import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/domain/repositories/movies_repository.dart';
 
 abstract class MoviesUseCase {
-  Future<List<MoviesEntity>> getNowPlayingMovies();
-  Future<List<MoviesEntity>> getPopularMovies();
-  Future<List<MoviesEntity>> getTopRatedMovies();
-  Future<List<MoviesEntity>> getUpcomingMovies();
+  Future<List<MovieEntity>> getNowPlayingMovies(int page);
+  Future<List<MovieEntity>> getPopularMovies();
+  Future<List<MovieEntity>> getTopRatedMovies();
+  Future<List<MovieEntity>> getUpcomingMovies();
 }
 
 class MoviesUseCaseImpl extends MoviesUseCase {
@@ -14,18 +14,18 @@ class MoviesUseCaseImpl extends MoviesUseCase {
   MoviesUseCaseImpl({required this.moviesRepository});
 
   @override
-  Future<List<MoviesEntity>> getNowPlayingMovies() =>
-      moviesRepository.getNowPlayingMovies();
+  Future<List<MovieEntity>> getNowPlayingMovies(int page) async =>
+      await moviesRepository.getNowPlayingMovies(page);
 
   @override
-  Future<List<MoviesEntity>> getPopularMovies() =>
+  Future<List<MovieEntity>> getPopularMovies() =>
       moviesRepository.getPopularMovies();
 
   @override
-  Future<List<MoviesEntity>> getTopRatedMovies() =>
+  Future<List<MovieEntity>> getTopRatedMovies() =>
       moviesRepository.getTopRatedMovies();
 
   @override
-  Future<List<MoviesEntity>> getUpcomingMovies() =>
+  Future<List<MovieEntity>> getUpcomingMovies() =>
       moviesRepository.getUpcomingMovies();
 }

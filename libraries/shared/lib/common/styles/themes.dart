@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared/common/styles/color_palettes.dart';
 
-const TextTheme _textTheme = TextTheme(
+TextTheme _textTheme = const TextTheme(
   headline1: TextStyle(
     fontSize: 92,
     fontWeight: FontWeight.w300,
@@ -23,11 +23,11 @@ const TextTheme _textTheme = TextTheme(
     letterSpacing: 0.25,
   ),
   headline5: TextStyle(
-    fontSize: 23,
+    fontSize: 24,
     fontWeight: FontWeight.w400,
   ),
   headline6: TextStyle(
-    fontSize: 19,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.15,
   ),
@@ -66,7 +66,7 @@ const TextTheme _textTheme = TextTheme(
     fontWeight: FontWeight.w400,
     letterSpacing: 1.5,
   ),
-);
+).apply(bodyColor: Colors.white);
 
 ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSwatch().copyWith(

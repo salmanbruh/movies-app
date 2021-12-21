@@ -7,13 +7,13 @@ part of 'movie_model.dart';
 // **************************************************************************
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
-      genres: json['genres'] as String? ?? "",
+      genres: json['genres'] as String? ?? '',
       title: json['title'] as String,
       overview: json['overview'] as String,
       posterPath: json['poster_path'] as String,
       releaseDate: json['release_date'] as String,
-      runtime: json['runtime'] as String? ?? "",
-      voteAverage: json['vote_average'] as String,
+      runtime: json['runtime'] as String? ?? '',
+      voteAverage: (json['vote_average'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$MovieModelToJson(MovieModel instance) =>

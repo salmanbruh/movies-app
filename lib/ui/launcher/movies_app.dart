@@ -4,6 +4,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:home/home.dart';
 import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_app/ui/splash/splash_page.dart';
+import 'package:movies_list/data/datasources/movies_data_source.dart';
+import 'package:movies_list/data/repositories/movies_repository_impl.dart';
+import 'package:movies_list/domain/repositories/movies_repository.dart';
+import 'package:movies_list/domain/usecases/movies_usecase.dart';
 import 'package:shared/common/common.dart';
 
 class AppModule extends Module {
@@ -16,6 +20,11 @@ class AppModule extends Module {
         Bind((_) => ColorPalettes()),
         Bind((_) => NamedRoutes()),
         Bind((_) => DioClient(baseUrl: baseUrl)),
+        Bind((_) => TmdbApi(dioClient: Modular.get<DioClient>())),
+        Bind((_) => MoviesRepositoryImpl(
+            moviesDataSource: Modular.get<MoviesDataSource>())),
+        Bind((_) => MoviesUseCaseImpl(
+            moviesRepository: Modular.get<MoviesRepository>())),
       ];
 
   @override
