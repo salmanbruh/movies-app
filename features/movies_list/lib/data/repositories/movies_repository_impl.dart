@@ -27,15 +27,21 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MovieEntity>> getTopRatedMovies(int page) {
-    // TODO: implement getTopRatedMovies
-    throw UnimplementedError();
+  Future<List<MovieEntity>> getTopRatedMovies(int page) async {
+    MovieResultModel movies = await moviesDataSource.getTopRatedMovies(page);
+
+    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+
+    return movieEntities;
   }
 
   @override
-  Future<List<MovieEntity>> getUpcomingMovies(int page) {
-    // TODO: implement getUpcomingMovies
-    throw UnimplementedError();
+  Future<List<MovieEntity>> getUpcomingMovies(int page) async {
+    MovieResultModel movies = await moviesDataSource.getUpcomingMovies(page);
+
+    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+
+    return movieEntities;
   }
 
   List<MovieEntity> _extractMovieEntities(MovieResultModel movieResultModel) {
