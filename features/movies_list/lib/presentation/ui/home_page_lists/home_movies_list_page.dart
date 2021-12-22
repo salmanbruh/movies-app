@@ -16,11 +16,11 @@ class _MoviesListState extends State<HomeMoviesListPage> {
       child: Column(
         children: const [
           HomeNowPlayingMoviesList(),
-          Divider(),
+          SizedBox(height: 16),
           HomeUpcomingMoviesList(),
-          Divider(),
+          SizedBox(height: 16),
           HomePopularMoviesList(),
-          Divider(),
+          SizedBox(height: 16),
           HomeTopRatedMoviesList(),
         ],
       ),

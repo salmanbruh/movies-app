@@ -17,6 +17,7 @@ class HomeMoviesCategoriesList extends StatelessWidget {
     return Column(
       children: [
         _buildCategoryHeader(context),
+        const SizedBox(height: 16),
         _buildMoviesList(context),
       ],
     );

@@ -30,22 +30,23 @@ class HomePageMovieCard extends StatelessWidget {
     );
   }
 
-  Widget _buildPosterImage(BuildContext context, MovieEntity movie) =>
-      CachedNetworkImage(
-        imageUrl: AppConfig.of(context).baseImageUrl +
-            ImageSizeUrlConstants.baseHomePosterSizeUrl +
-            movie.posterPath,
-        imageBuilder: (context, imageProvider) => Container(
-          width: double.parse(
-              ImageSizeUrlConstants.baseHomePosterSizeUrl.substring(2)),
-          height: 232,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+  Widget _buildPosterImage(BuildContext context, MovieEntity movie) => Center(
+        child: CachedNetworkImage(
+          imageUrl: AppConfig.of(context).baseImageUrl +
+              ImageSizeUrlConstants.baseHomePosterSizeUrl +
+              movie.posterPath,
+          imageBuilder: (context, imageProvider) => Container(
+            width: double.parse(
+                ImageSizeUrlConstants.baseHomePosterSizeUrl.substring(2)),
+            height: 232,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+            ),
           ),
+          placeholder: (context, url) => const CircularProgressIndicator(),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
-        placeholder: (context, url) => const CircularProgressIndicator(),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
       );
 
   Widget _buildMovieTitle(BuildContext context, MovieEntity movie) => Flexible(
