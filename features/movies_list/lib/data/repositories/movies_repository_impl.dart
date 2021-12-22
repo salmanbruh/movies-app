@@ -19,7 +19,7 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
   @override
   Future<List<MovieEntity>> getPopularMovies(int page) async {
-    MovieResultModel movies = await moviesDataSource.getUpcomingMovies(page);
+    MovieResultModel movies = await moviesDataSource.getPopularMovies(page);
 
     List<MovieEntity> movieEntities = _extractMovieEntities(movies);
 
