@@ -20,7 +20,8 @@ class _HomeNowPlayingMoviesListState extends State<HomeNowPlayingMoviesList> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Modular.get<NowPlayingMoviesBloc>()..add(LoadData()),
+      create: (context) =>
+          Modular.get<NowPlayingMoviesBloc>()..add(NowPlayingMoviesLoadData()),
       child: HomeMoviesCategoriesList(
         categoryName: "Now Playing",
         viewAllOnTapFunction: () {},

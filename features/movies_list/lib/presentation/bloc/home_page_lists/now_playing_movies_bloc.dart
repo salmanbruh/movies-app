@@ -20,7 +20,7 @@ class NowPlayingMoviesBloc
   @override
   Stream<NowPlayingMoviesState> mapEventToState(
       NowPlayingMoviesEvent event) async* {
-    if (event is LoadData) {
+    if (event is NowPlayingMoviesLoadData) {
       yield* _loadNowPlayingMovies();
     }
   }
