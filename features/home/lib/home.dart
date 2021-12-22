@@ -12,7 +12,9 @@ class FeatureHomeModule extends Module {
         Bind((_) =>
             UpcomingMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
         Bind((_) =>
-            PopularMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>()))
+            PopularMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
+        Bind((_) =>
+            TopRatedMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>()))
       ];
 
   @override
