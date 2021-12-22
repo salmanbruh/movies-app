@@ -7,10 +7,10 @@ import 'package:shared/common/common.dart';
 class FeatureHomeModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind(
-          (_) =>
-              NowPlayingMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>()),
-        ),
+        Bind((_) =>
+            NowPlayingMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
+        Bind((_) =>
+            UpcomingMoviesBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
       ];
 
   @override

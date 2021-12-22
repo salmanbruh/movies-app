@@ -5,7 +5,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/domain/usecases/movies_usecase.dart';
-import 'package:movies_list/presentation/bloc/blocs.dart';
 
 part 'upcoming_movies_event.dart';
 part 'upcoming_movies_state.dart';
@@ -20,7 +19,7 @@ class UpcomingMoviesBloc
   @override
   Stream<UpcomingMoviesState> mapEventToState(
       UpcomingMoviesEvent event) async* {
-    if (event is LoadData) {
+    if (event is UpcomingMoviesLoadData) {
       yield* _loadUpcomingMovies();
     }
   }
