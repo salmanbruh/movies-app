@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movies_list/domain/entities/movies_entity.dart';
 
 class MovieDetails extends StatefulWidget {
-  final int movieId;
-  const MovieDetails({required this.movieId, Key? key}) : super(key: key);
+  final MovieEntity movie;
+  const MovieDetails({required this.movie, Key? key}) : super(key: key);
 
   @override
   _MovieDetailsState createState() => _MovieDetailsState();
@@ -35,7 +36,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Test 1"),
+                      Text(widget.movie.title),
                       Text("Test 2"),
                     ],
                   ),

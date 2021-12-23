@@ -21,7 +21,9 @@ class HomePageMovieCard extends StatelessWidget {
       width: 154,
       child: InkWell(
         onTap: () => Modular.to.pushNamed(
-            Modular.get<NamedRoutes>().moviesModuleRoute + "/${movie.id}"),
+          Modular.get<NamedRoutes>().movieDetails,
+          arguments: movie,
+        ),
         borderRadius: BorderRadius.circular(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
