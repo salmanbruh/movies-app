@@ -2,6 +2,7 @@ import 'package:core/network/dio_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:home/home.dart';
+import 'package:movie_details/movie_details.dart';
 import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_app/ui/splash/splash_page.dart';
 import 'package:movies_list/data/datasources/movies_data_source.dart';
@@ -37,6 +38,10 @@ class AppModule extends Module {
           Modular.get<NamedRoutes>().root,
           module: FeatureHomeModule(),
         ),
+        ModuleRoute(
+          Modular.get<NamedRoutes>().root,
+          module: FeatureMovieDetailsModule(),
+        )
       ];
 }
 
