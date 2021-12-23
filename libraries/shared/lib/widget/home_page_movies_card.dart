@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_list/domain/domain.dart';
+import 'package:shared/common/common.dart';
 
 class HomePageMovieCard extends StatelessWidget {
   final MovieEntity movie;
@@ -17,15 +19,20 @@ class HomePageMovieCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       width: 154,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildPosterImage(context, movie),
-          const SizedBox(height: 8),
-          _buildMovieTitle(context, movie),
-          const SizedBox(height: 8),
-          _buildMovieRating(context, movie),
-        ],
+      child: InkWell(
+        onTap: () => Modular.to.pushNamed(
+            Modular.get<NamedRoutes>().moviesModuleRoute + "/${movie.id}"),
+        borderRadius: BorderRadius.circular(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildPosterImage(context, movie),
+            const SizedBox(height: 8),
+            _buildMovieTitle(context, movie),
+            const SizedBox(height: 8),
+            _buildMovieRating(context, movie),
+          ],
+        ),
       ),
     );
   }

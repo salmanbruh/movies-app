@@ -8,6 +8,9 @@ class NamedRoutes {
   // Home feature
   String homePage = "/home/";
 
+  // Movie module
+  String moviesModuleRoute = "/movies";
+
   // Movies List
   String moviesList = "/movies/list/:category";
 
