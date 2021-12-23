@@ -50,7 +50,6 @@ class _HomeUpcomingMoviesListState extends State<HomeUpcomingMoviesList> {
           } else {
             return const Text("Unknown Error");
           }
-          ;
         },
       );
 }
