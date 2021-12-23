@@ -49,6 +49,7 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
     for (var data in movieResultModel.movies) {
       var movie = MovieEntity(
+        id: data.id,
         genres: data.genres ?? "",
         title: data.title,
         overview: data.overview,
