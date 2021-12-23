@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  movies_list:
+    path: ../movies_list
+
   core:
     path: ../../libraries/core
   dependencies:
