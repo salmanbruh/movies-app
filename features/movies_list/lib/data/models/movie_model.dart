@@ -4,6 +4,9 @@ part 'movie_model.g.dart';
 
 @JsonSerializable()
 class MovieModel {
+  @JsonKey(name: "id")
+  final int id;
+
   @JsonKey(name: "genres", defaultValue: "")
   final String? genres;
 
@@ -26,6 +29,7 @@ class MovieModel {
   final double voteAverage;
 
   MovieModel({
+    required this.id,
     required this.genres,
     required this.title,
     required this.overview,
