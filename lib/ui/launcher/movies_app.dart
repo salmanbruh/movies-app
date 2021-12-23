@@ -34,7 +34,7 @@ class AppModule extends Module {
           child: (context, args) => const SplashPage(),
         ),
         ModuleRoute(
-          Modular.get<NamedRoutes>().homePage,
+          Modular.get<NamedRoutes>().root,
           module: FeatureHomeModule(),
         ),
       ];

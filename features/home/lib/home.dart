@@ -20,7 +20,7 @@ class FeatureHomeModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          Modular.get<NamedRoutes>().root,
+          Modular.get<NamedRoutes>().homePage,
           child: (context, arg) => const HomePage(),
         ),
       ];
