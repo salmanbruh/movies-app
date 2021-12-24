@@ -13,7 +13,7 @@ class MovieModel {
   @JsonKey(name: "title")
   final String title;
 
-  @JsonKey(name: "overview")
+  @JsonKey(name: "overview", defaultValue: "")
   final String overview;
 
   @JsonKey(name: "poster_path")

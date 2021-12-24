@@ -10,7 +10,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       id: json['id'] as int,
       genres: json['genres'] as String? ?? '',
       title: json['title'] as String,
-      overview: json['overview'] as String,
+      overview: json['overview'] as String? ?? '',
       posterPath: json['poster_path'] as String,
       releaseDate: json['release_date'] as String,
       runtime: json['runtime'] as String? ?? '',
