@@ -13,4 +13,5 @@ class NamedRoutes {
 
   // Movie Details
   String movieDetails = "/movies";
+  String movieDetailsIdParam = "/:movieId";
 }

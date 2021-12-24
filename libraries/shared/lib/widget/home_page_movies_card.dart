@@ -21,7 +21,7 @@ class HomePageMovieCard extends StatelessWidget {
       width: 154,
       child: InkWell(
         onTap: () => Modular.to.pushNamed(
-          Modular.get<NamedRoutes>().movieDetails,
+          Modular.get<NamedRoutes>().movieDetails + "/${movie.id}",
           arguments: movie,
         ),
         borderRadius: BorderRadius.circular(10),

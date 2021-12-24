@@ -9,8 +9,10 @@ class FeatureMovieDetailsModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          Modular.get<NamedRoutes>().movieDetails,
-          child: (context, args) => MovieDetails(movie: args.data),
+          Modular.get<NamedRoutes>().movieDetails +
+              Modular.get<NamedRoutes>().movieDetailsIdParam,
+          child: (context, args) =>
+              MovieDetails(movieId: int.parse(args.params["movieId"])),
         ),
       ];
 }
