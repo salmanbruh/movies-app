@@ -14,7 +14,7 @@ class MovieEntity extends Equatable {
     required this.id,
     required this.genres,
     required this.title,
-    this.overview = "",
+    required this.overview,
     required this.posterPath,
     required this.releaseDate,
     required this.runtime,
