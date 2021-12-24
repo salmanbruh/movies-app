@@ -6,6 +6,7 @@ abstract class MoviesUseCase {
   Future<List<MovieEntity>> getPopularMovies(int page);
   Future<List<MovieEntity>> getTopRatedMovies(int page);
   Future<List<MovieEntity>> getUpcomingMovies(int page);
+  Future<MovieEntity> getMovieDetails(int movieId);
 }
 
 class MoviesUseCaseImpl extends MoviesUseCase {
@@ -28,4 +29,10 @@ class MoviesUseCaseImpl extends MoviesUseCase {
   @override
   Future<List<MovieEntity>> getUpcomingMovies(int page) =>
       moviesRepository.getUpcomingMovies(page);
+
+  @override
+  Future<MovieEntity> getMovieDetails(int movieId) {
+    // TODO: implement getMovieDetails
+    throw UnimplementedError();
+  }
 }

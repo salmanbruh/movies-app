@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:core/network/dio_client.dart';
-import 'package:movies_list/data/models/movie_result_model.dart';
+import 'package:movies_list/data/models/movies_list_result_model.dart';
 import 'package:shared/common/common.dart';
 
 abstract class MoviesDataSource {
-  Future<MovieResultModel> getNowPlayingMovies(int page);
-  Future<MovieResultModel> getPopularMovies(int page);
-  Future<MovieResultModel> getTopRatedMovies(int page);
-  Future<MovieResultModel> getUpcomingMovies(int page);
+  Future<MoviesListResultModel> getNowPlayingMovies(int page);
+  Future<MoviesListResultModel> getPopularMovies(int page);
+  Future<MoviesListResultModel> getTopRatedMovies(int page);
+  Future<MoviesListResultModel> getUpcomingMovies(int page);
 }
 
 class TmdbMoviesUrl {
@@ -15,6 +15,7 @@ class TmdbMoviesUrl {
   static String popularMovies = "/movie/popular";
   static String topRatedMovies = "/movie/top_rated";
   static String upcomingMovies = "/movie/upcoming";
+  static String movieDetails = "/movie";
 }
 
 class TmdbApi extends MoviesDataSource {
@@ -23,7 +24,7 @@ class TmdbApi extends MoviesDataSource {
   TmdbApi({required this.dioClient});
 
   @override
-  Future<MovieResultModel> getNowPlayingMovies(int page) async {
+  Future<MoviesListResultModel> getNowPlayingMovies(int page) async {
     try {
       Response response = await dioClient.dio.get(
         TmdbMoviesUrl.nowPlayingMovies,
@@ -32,14 +33,14 @@ class TmdbApi extends MoviesDataSource {
           "page": page,
         },
       );
-      return MovieResultModel.fromJson(response.data);
+      return MoviesListResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }
   }
 
   @override
-  Future<MovieResultModel> getPopularMovies(int page) async {
+  Future<MoviesListResultModel> getPopularMovies(int page) async {
     try {
       Response response = await dioClient.dio.get(
         TmdbMoviesUrl.popularMovies,
@@ -48,14 +49,14 @@ class TmdbApi extends MoviesDataSource {
           "page": page,
         },
       );
-      return MovieResultModel.fromJson(response.data);
+      return MoviesListResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }
   }
 
   @override
-  Future<MovieResultModel> getTopRatedMovies(int page) async {
+  Future<MoviesListResultModel> getTopRatedMovies(int page) async {
     try {
       Response response = await dioClient.dio.get(
         TmdbMoviesUrl.topRatedMovies,
@@ -64,14 +65,14 @@ class TmdbApi extends MoviesDataSource {
           "page": page,
         },
       );
-      return MovieResultModel.fromJson(response.data);
+      return MoviesListResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }
   }
 
   @override
-  Future<MovieResultModel> getUpcomingMovies(int page) async {
+  Future<MoviesListResultModel> getUpcomingMovies(int page) async {
     try {
       Response response = await dioClient.dio.get(
         TmdbMoviesUrl.upcomingMovies,
@@ -80,7 +81,7 @@ class TmdbApi extends MoviesDataSource {
           "page": page,
         },
       );
-      return MovieResultModel.fromJson(response.data);
+      return MoviesListResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }

@@ -5,4 +5,5 @@ abstract class MoviesRepository {
   Future<List<MovieEntity>> getPopularMovies(int page);
   Future<List<MovieEntity>> getTopRatedMovies(int page);
   Future<List<MovieEntity>> getUpcomingMovies(int page);
+  Future<MovieEntity> getMovieDetails(int movieId);
 }
