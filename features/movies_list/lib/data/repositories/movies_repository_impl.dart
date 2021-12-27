@@ -1,4 +1,5 @@
 import 'package:movies_list/data/datasources/movies_data_source.dart';
+import 'package:movies_list/data/models/movie_model.dart';
 import 'package:movies_list/data/models/movies_list_result_model.dart';
 import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/domain/repositories/movies_repository.dart';
@@ -55,12 +56,12 @@ class MoviesRepositoryImpl extends MoviesRepository {
     for (var data in movieResultModel.movies) {
       var movie = MovieEntity(
         id: data.id,
-        genres: data.genres ?? "",
+        genres: data.genres,
         title: data.title,
         overview: data.overview,
         posterPath: data.posterPath,
         releaseDate: data.releaseDate,
-        runtime: data.runtime ?? "",
+        runtime: data.runtime,
         voteAverage: data.voteAverage,
       );
       movieEntities.add(movie);
@@ -70,8 +71,19 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<MovieEntity> getMovieDetails(int movieId) {
-    // TODO: implement getMovieDetails
-    throw UnimplementedError();
+  Future<MovieEntity> getMovieDetails(int movieId) async {
+    MovieModel movieDetailsResult =
+        await moviesDataSource.getMovieDetails(movieId);
+    MovieEntity movie = MovieEntity(
+      id: movieDetailsResult.id,
+      genres: movieDetailsResult.genres,
+      title: movieDetailsResult.title,
+      overview: movieDetailsResult.overview,
+      posterPath: movieDetailsResult.posterPath,
+      releaseDate: movieDetailsResult.releaseDate,
+      runtime: movieDetailsResult.runtime,
+      voteAverage: movieDetailsResult.voteAverage,
+    );
+    return movie;
   }
 }

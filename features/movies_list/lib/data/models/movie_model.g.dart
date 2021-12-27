@@ -8,7 +8,7 @@ part of 'movie_model.dart';
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       id: json['id'] as int,
-      genres: json['genres'] as String? ?? '',
+      genres: json['genres'] as List<dynamic>? ?? [],
       title: json['title'] as String,
       overview: json['overview'] as String? ?? '',
       posterPath: json['poster_path'] as String,

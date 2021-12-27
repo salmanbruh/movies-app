@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class MovieEntity extends Equatable {
   final int id;
-  final String genres;
+  final List<dynamic> genres;
   final String title;
   final String overview;
   final String posterPath;

@@ -7,8 +7,8 @@ class MovieModel {
   @JsonKey(name: "id")
   final int id;
 
-  @JsonKey(name: "genres", defaultValue: "")
-  final String? genres;
+  @JsonKey(name: "genres", defaultValue: [])
+  final List<dynamic> genres;
 
   @JsonKey(name: "title")
   final String title;
@@ -23,7 +23,7 @@ class MovieModel {
   final String releaseDate;
 
   @JsonKey(name: "runtime", defaultValue: "")
-  final String? runtime;
+  final String runtime;
 
   @JsonKey(name: "vote_average")
   final double voteAverage;
