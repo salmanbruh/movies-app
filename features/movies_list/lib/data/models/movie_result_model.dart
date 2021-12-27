@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'movie_model.g.dart';
+part 'movie_result_model.g.dart';
 
 @JsonSerializable()
-class MovieModel {
+class MovieResultModel {
   @JsonKey(name: "id")
   final int id;
 
@@ -28,7 +28,7 @@ class MovieModel {
   @JsonKey(name: "vote_average")
   final double voteAverage;
 
-  MovieModel({
+  MovieResultModel({
     required this.id,
     required this.genres,
     required this.title,
@@ -39,8 +39,8 @@ class MovieModel {
     required this.voteAverage,
   });
 
-  factory MovieModel.fromJson(Map<String, dynamic> json) =>
-      _$MovieModelFromJson(json);
+  factory MovieResultModel.fromJson(Map<String, dynamic> json) =>
+      _$MovieResultModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MovieModelToJson(this);
+  Map<String, dynamic> toJson() => _$MovieResultModelToJson(this);
 }

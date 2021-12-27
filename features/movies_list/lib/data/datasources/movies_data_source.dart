@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:core/network/dio_client.dart';
-import 'package:movies_list/data/models/movie_model.dart';
+import 'package:movies_list/data/models/movie_result_model.dart';
 import 'package:movies_list/data/models/movies_list_result_model.dart';
 import 'package:shared/common/common.dart';
 
@@ -9,7 +9,7 @@ abstract class MoviesDataSource {
   Future<MoviesListResultModel> getPopularMovies(int page);
   Future<MoviesListResultModel> getTopRatedMovies(int page);
   Future<MoviesListResultModel> getUpcomingMovies(int page);
-  Future<MovieModel> getMovieDetails(int movieId);
+  Future<MovieResultModel> getMovieDetails(int movieId);
 }
 
 class TmdbMoviesUrl {
@@ -90,7 +90,7 @@ class TmdbApi extends MoviesDataSource {
   }
 
   @override
-  Future<MovieModel> getMovieDetails(int movieId) async {
+  Future<MovieResultModel> getMovieDetails(int movieId) async {
     try {
       Response response = await dioClient.dio.get(
         TmdbMoviesUrl.movieDetails + "/$movieId",
@@ -99,7 +99,7 @@ class TmdbApi extends MoviesDataSource {
         },
       );
 
-      return MovieModel.fromJson(response.data);
+      return MovieResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }

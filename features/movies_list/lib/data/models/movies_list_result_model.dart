@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movies_list/data/models/movie_model.dart';
+import 'package:movies_list/data/models/movie_result_model.dart';
 
 part 'movies_list_result_model.g.dart';
 
 @JsonSerializable()
 class MoviesListResultModel {
   @JsonKey(name: "results")
-  final List<MovieModel> movies;
+  final List<MovieResultModel> movies;
 
   @JsonKey(name: "total_pages")
   final int totalPages;

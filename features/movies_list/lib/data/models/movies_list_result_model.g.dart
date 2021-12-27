@@ -10,7 +10,7 @@ MoviesListResultModel _$MoviesListResultModelFromJson(
         Map<String, dynamic> json) =>
     MoviesListResultModel(
       movies: (json['results'] as List<dynamic>)
-          .map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => MovieResultModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalPages: json['total_pages'] as int,
     );

@@ -1,5 +1,5 @@
 import 'package:movies_list/data/datasources/movies_data_source.dart';
-import 'package:movies_list/data/models/movie_model.dart';
+import 'package:movies_list/data/models/movie_result_model.dart';
 import 'package:movies_list/data/models/movies_list_result_model.dart';
 import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/domain/repositories/movies_repository.dart';
@@ -72,17 +72,17 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
   @override
   Future<MovieEntity> getMovieDetails(int movieId) async {
-    MovieModel movieDetailsResult =
+    MovieResultModel movieResult =
         await moviesDataSource.getMovieDetails(movieId);
     MovieEntity movie = MovieEntity(
-      id: movieDetailsResult.id,
-      genres: movieDetailsResult.genres,
-      title: movieDetailsResult.title,
-      overview: movieDetailsResult.overview,
-      posterPath: movieDetailsResult.posterPath,
-      releaseDate: movieDetailsResult.releaseDate,
-      runtime: movieDetailsResult.runtime,
-      voteAverage: movieDetailsResult.voteAverage,
+      id: movieResult.id,
+      genres: movieResult.genres,
+      title: movieResult.title,
+      overview: movieResult.overview,
+      posterPath: movieResult.posterPath,
+      releaseDate: movieResult.releaseDate,
+      runtime: movieResult.runtime,
+      voteAverage: movieResult.voteAverage,
     );
     return movie;
   }
