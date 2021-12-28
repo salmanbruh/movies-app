@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:movies_list/data/models/movie_result_model.dart';
 
 class MovieEntity extends Equatable {
   final int id;
@@ -32,4 +33,16 @@ class MovieEntity extends Equatable {
         runtime,
         voteAverage,
       ];
+
+  factory MovieEntity.fromMovieResultModel(MovieResultModel movieResultModel) =>
+      MovieEntity(
+        id: movieResultModel.id,
+        genres: movieResultModel.genres,
+        title: movieResultModel.title,
+        overview: movieResultModel.overview,
+        posterPath: movieResultModel.posterPath,
+        releaseDate: movieResultModel.releaseDate,
+        runtime: movieResultModel.runtime,
+        voteAverage: movieResultModel.voteAverage,
+      );
 }
