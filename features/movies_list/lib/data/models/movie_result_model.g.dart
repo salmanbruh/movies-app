@@ -14,7 +14,7 @@ MovieResultModel _$MovieResultModelFromJson(Map<String, dynamic> json) =>
       overview: json['overview'] as String? ?? '',
       posterPath: json['poster_path'] as String,
       releaseDate: json['release_date'] as String,
-      runtime: json['runtime'] as String? ?? '',
+      runtime: json['runtime'] as int? ?? 0,
       voteAverage: (json['vote_average'] as num).toDouble(),
     );
 

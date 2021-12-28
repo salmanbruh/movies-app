@@ -8,7 +8,7 @@ class MovieEntity extends Equatable {
   final String overview;
   final String posterPath;
   final String releaseDate;
-  final String runtime;
+  final int runtime;
   final double voteAverage;
 
   const MovieEntity({

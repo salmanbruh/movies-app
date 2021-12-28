@@ -22,8 +22,8 @@ class MovieResultModel {
   @JsonKey(name: "release_date")
   final String releaseDate;
 
-  @JsonKey(name: "runtime", defaultValue: "")
-  final String runtime;
+  @JsonKey(name: "runtime", defaultValue: 0)
+  final int runtime;
 
   @JsonKey(name: "vote_average")
   final double voteAverage;
