@@ -31,8 +31,6 @@ class MoviesUseCaseImpl extends MoviesUseCase {
       moviesRepository.getUpcomingMovies(page);
 
   @override
-  Future<MovieEntity> getMovieDetails(int movieId) {
-    // TODO: implement getMovieDetails
-    throw UnimplementedError();
-  }
+  Future<MovieEntity> getMovieDetails(int movieId) =>
+      moviesRepository.getMovieDetails(movieId);
 }
