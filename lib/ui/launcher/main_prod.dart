@@ -1,5 +1,5 @@
 import 'package:core/network/api_constants.dart';
-import 'package:core/network/image_url_constants.dart';
+import 'package:core/network/image_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';

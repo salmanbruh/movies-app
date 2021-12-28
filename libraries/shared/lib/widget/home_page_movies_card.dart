@@ -18,7 +18,7 @@ class HomePageMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
-      width: 154,
+      width: ImageSizeConstants.homePosterWidth,
       child: InkWell(
         onTap: () => Modular.to.pushNamed(
           Modular.get<NamedRoutes>().movieDetails + "/${movie.id}",
@@ -39,22 +39,24 @@ class HomePageMovieCard extends StatelessWidget {
     );
   }
 
-  Widget _buildPosterImage(BuildContext context, MovieEntity movie) => Center(
-        child: CachedNetworkImage(
-          imageUrl: AppConfig.of(context).baseImageUrl +
-              ImageSizeUrlConstants.baseHomePosterSizeUrl +
-              movie.posterPath,
-          imageBuilder: (context, imageProvider) => Container(
-            width: double.parse(
-                ImageSizeUrlConstants.baseHomePosterSizeUrl.substring(2)),
-            height: 232,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+  Widget _buildPosterImage(BuildContext context, MovieEntity movie) => SizedBox(
+        height: ImageSizeConstants.homePosterHeight,
+        child: Center(
+          child: CachedNetworkImage(
+            imageUrl: AppConfig.of(context).baseImageUrl +
+                ImageSizeUrlConstants.baseHomePosterSizeUrl +
+                movie.posterPath,
+            imageBuilder: (context, imageProvider) => Container(
+              width: ImageSizeConstants.homePosterWidth,
+              height: ImageSizeConstants.homePosterHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              ),
             ),
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          placeholder: (context, url) => const CircularProgressIndicator(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       );
 
