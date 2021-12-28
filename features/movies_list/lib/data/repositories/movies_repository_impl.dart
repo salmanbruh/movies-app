@@ -53,17 +53,8 @@ class MoviesRepositoryImpl extends MoviesRepository {
       MoviesListResultModel movieResultModel) {
     List<MovieEntity> movieEntities = [];
 
-    for (var data in movieResultModel.movies) {
-      var movie = MovieEntity(
-        id: data.id,
-        genres: data.genres,
-        title: data.title,
-        overview: data.overview,
-        posterPath: data.posterPath,
-        releaseDate: data.releaseDate,
-        runtime: data.runtime,
-        voteAverage: data.voteAverage,
-      );
+    for (var movieResultModel in movieResultModel.movies) {
+      var movie = MovieEntity.fromMovieResultModel(movieResultModel);
       movieEntities.add(movie);
     }
 
@@ -72,18 +63,9 @@ class MoviesRepositoryImpl extends MoviesRepository {
 
   @override
   Future<MovieEntity> getMovieDetails(int movieId) async {
-    MovieResultModel movieResult =
+    MovieResultModel movieResultModel =
         await moviesDataSource.getMovieDetails(movieId);
-    MovieEntity movie = MovieEntity(
-      id: movieResult.id,
-      genres: movieResult.genres,
-      title: movieResult.title,
-      overview: movieResult.overview,
-      posterPath: movieResult.posterPath,
-      releaseDate: movieResult.releaseDate,
-      runtime: movieResult.runtime,
-      voteAverage: movieResult.voteAverage,
-    );
+    MovieEntity movie = MovieEntity.fromMovieResultModel(movieResultModel);
     return movie;
   }
 }
