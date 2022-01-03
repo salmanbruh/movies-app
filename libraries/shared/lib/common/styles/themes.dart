@@ -71,7 +71,7 @@ TextTheme _textTheme = const TextTheme(
 ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: Modular.get<ColorPalettes>().darkPrimary,
-    secondary: Modular.get<ColorPalettes>().darkAccent,
+    secondary: Modular.get<ColorPalettes>().darkPrimary.withOpacity(.25),
     background: Modular.get<ColorPalettes>().darkBG,
     brightness: Brightness.dark,
   ),
