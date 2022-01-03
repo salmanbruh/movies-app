@@ -9,9 +9,10 @@ class NamedRoutes {
   String homePage = "/home/";
 
   // Movies List
-  String moviesList = "/movies/list/:category";
+  String moviesList = "/movies/list";
+  String moviesListCategory = "/:category";
 
   // Movie Details
-  String movieDetails = "/movies";
+  String movies = "/movies";
   String movieDetailsIdParam = "/:movieId";
 }
