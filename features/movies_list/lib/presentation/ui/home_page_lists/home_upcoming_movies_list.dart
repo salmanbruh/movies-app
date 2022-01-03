@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movies_list/movies_list.dart';
+import 'package:movies_list/domain/domain.dart';
 import 'package:movies_list/presentation/bloc/blocs.dart';
+import 'package:movies_list/presentation/ui/movies_lists.dart';
 import 'package:shared/widget/widget.dart';
 
 class HomeUpcomingMoviesList extends StatefulWidget {
