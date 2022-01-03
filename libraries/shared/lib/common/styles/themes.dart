@@ -75,6 +75,9 @@ ThemeData theme = ThemeData(
     background: Modular.get<ColorPalettes>().darkBG,
     brightness: Brightness.dark,
   ),
+  backgroundColor: Modular.get<ColorPalettes>().darkBG,
+  dialogBackgroundColor: Modular.get<ColorPalettes>().darkBG,
+  scaffoldBackgroundColor: Modular.get<ColorPalettes>().darkBG,
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.transparent,
     elevation: 0,
