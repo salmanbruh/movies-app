@@ -28,7 +28,8 @@ class TopRatedMoviesBloc
   Stream<TopRatedMoviesState> _loadTopRatedMovies() async* {
     try {
       yield TopRatedMoviesLoading();
-      var movies = await moviesUseCase.getTopRatedMovies(1);
+      List<MovieEntity> movies =
+          await moviesUseCase.getTopRatedMovies(1) as List<MovieEntity>;
       if (movies.isEmpty) {
         yield TopRatedMoviesNoData(message: "No Data");
       } else {

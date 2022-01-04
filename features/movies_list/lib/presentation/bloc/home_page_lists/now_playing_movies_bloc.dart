@@ -28,7 +28,8 @@ class NowPlayingMoviesBloc
   Stream<NowPlayingMoviesState> _loadNowPlayingMovies() async* {
     try {
       yield NowPlayingMoviesLoading();
-      var movies = await moviesUseCase.getNowPlayingMovies(1);
+      List<MovieEntity> movies =
+          await moviesUseCase.getNowPlayingMovies(1) as List<MovieEntity>;
       if (movies.isEmpty) {
         yield NowPlayingMoviesNoData(message: "No Data");
       } else {

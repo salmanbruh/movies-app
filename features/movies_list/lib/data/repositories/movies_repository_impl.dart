@@ -10,7 +10,10 @@ class MoviesRepositoryImpl extends MoviesRepository {
   MoviesRepositoryImpl({required this.moviesDataSource});
 
   @override
-  Future<List<MovieEntity>> getNowPlayingMovies(int page) async {
+  Future<List<dynamic>> getNowPlayingMovies(
+    int page, {
+    bool withTotalPage = false,
+  }) async {
     MoviesListResultModel movies =
         await moviesDataSource.getNowPlayingMovies(page);
 
@@ -20,7 +23,10 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MovieEntity>> getPopularMovies(int page) async {
+  Future<List<dynamic>> getPopularMovies(
+    int page, {
+    bool withTotalPage = false,
+  }) async {
     MoviesListResultModel movies =
         await moviesDataSource.getPopularMovies(page);
 
@@ -30,7 +36,10 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MovieEntity>> getTopRatedMovies(int page) async {
+  Future<List<dynamic>> getTopRatedMovies(
+    int page, {
+    bool withTotalPage = false,
+  }) async {
     MoviesListResultModel movies =
         await moviesDataSource.getTopRatedMovies(page);
 
@@ -40,11 +49,14 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MovieEntity>> getUpcomingMovies(int page) async {
+  Future<List<dynamic>> getUpcomingMovies(
+    int page, {
+    bool withTotalPage = false,
+  }) async {
     MoviesListResultModel movies =
         await moviesDataSource.getUpcomingMovies(page);
 
-    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+    List<dynamic> movieEntities = _extractMovieEntities(movies);
 
     return movieEntities;
   }
