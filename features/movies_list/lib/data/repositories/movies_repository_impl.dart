@@ -10,55 +10,46 @@ class MoviesRepositoryImpl extends MoviesRepository {
   MoviesRepositoryImpl({required this.moviesDataSource});
 
   @override
-  Future<List<dynamic>> getNowPlayingMovies(
-    int page, {
-    bool withTotalPage = false,
-  }) async {
-    MoviesListResultModel movies =
+  Future<Map<String, dynamic>> getNowPlayingMovies(int page) async {
+    MoviesListResultModel moviesResultModel =
         await moviesDataSource.getNowPlayingMovies(page);
 
-    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+    List<MovieEntity> movieEntities = _extractMovieEntities(moviesResultModel);
 
-    return movieEntities;
+    return _apiCallResult(movieEntities, moviesResultModel.totalPages);
   }
 
   @override
-  Future<List<dynamic>> getPopularMovies(
-    int page, {
-    bool withTotalPage = false,
-  }) async {
-    MoviesListResultModel movies =
+  Future<Map<String, dynamic>> getPopularMovies(int page) async {
+    MoviesListResultModel moviesResultModel =
         await moviesDataSource.getPopularMovies(page);
 
-    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+    List<MovieEntity> movieEntities = _extractMovieEntities(moviesResultModel);
 
-    return movieEntities;
+    return _apiCallResult(movieEntities, moviesResultModel.totalPages);
   }
 
   @override
-  Future<List<dynamic>> getTopRatedMovies(
-    int page, {
-    bool withTotalPage = false,
-  }) async {
-    MoviesListResultModel movies =
+  Future<Map<String, dynamic>> getTopRatedMovies(int page) async {
+    MoviesListResultModel moviesResultModel =
         await moviesDataSource.getTopRatedMovies(page);
 
-    List<MovieEntity> movieEntities = _extractMovieEntities(movies);
+    List<MovieEntity> movieEntities = _extractMovieEntities(moviesResultModel);
 
-    return movieEntities;
+    return _apiCallResult(movieEntities, moviesResultModel.totalPages);
   }
 
   @override
-  Future<List<dynamic>> getUpcomingMovies(
+  Future<Map<String, dynamic>> getUpcomingMovies(
     int page, {
     bool withTotalPage = false,
   }) async {
-    MoviesListResultModel movies =
+    MoviesListResultModel moviesResultModel =
         await moviesDataSource.getUpcomingMovies(page);
 
-    List<dynamic> movieEntities = _extractMovieEntities(movies);
+    List<MovieEntity> movieEntities = _extractMovieEntities(moviesResultModel);
 
-    return movieEntities;
+    return _apiCallResult(movieEntities, moviesResultModel.totalPages);
   }
 
   List<MovieEntity> _extractMovieEntities(
@@ -71,6 +62,14 @@ class MoviesRepositoryImpl extends MoviesRepository {
     }
 
     return movieEntities;
+  }
+
+  Map<String, dynamic> _apiCallResult(
+      List<MovieEntity> movies, int totalPages) {
+    return {
+      "movies": movies,
+      "totalPages": totalPages,
+    };
   }
 
   @override

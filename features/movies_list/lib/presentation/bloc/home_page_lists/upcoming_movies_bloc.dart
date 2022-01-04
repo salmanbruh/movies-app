@@ -27,8 +27,9 @@ class UpcomingMoviesBloc
   Stream<UpcomingMoviesState> _loadUpcomingMovies() async* {
     try {
       yield UpcomingMoviesLoading();
-      List<MovieEntity> movies =
-          await moviesUseCase.getUpcomingMovies(1) as List<MovieEntity>;
+      Map<String, dynamic> apiCallResult =
+          await moviesUseCase.getUpcomingMovies(1);
+      List<MovieEntity> movies = apiCallResult["movies"];
       if (movies.isEmpty) {
         yield UpcomingMoviesNoData(message: "No Data");
       } else {

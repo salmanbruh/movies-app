@@ -28,8 +28,9 @@ class TopRatedMoviesBloc
   Stream<TopRatedMoviesState> _loadTopRatedMovies() async* {
     try {
       yield TopRatedMoviesLoading();
-      List<MovieEntity> movies =
-          await moviesUseCase.getTopRatedMovies(1) as List<MovieEntity>;
+      Map<String, dynamic> apiCallResult =
+          await moviesUseCase.getTopRatedMovies(1);
+      List<MovieEntity> movies = apiCallResult["movies"];
       if (movies.isEmpty) {
         yield TopRatedMoviesNoData(message: "No Data");
       } else {

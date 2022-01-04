@@ -26,8 +26,9 @@ class PopularMoviesBloc extends Bloc<PopularMoviesEvent, PopularMoviesState> {
   Stream<PopularMoviesState> _loadPopularMovies() async* {
     try {
       yield PopularMoviesLoading();
-      List<MovieEntity> movies =
-          await moviesUseCase.getPopularMovies(1) as List<MovieEntity>;
+      Map<String, dynamic> apiCallResult =
+          await moviesUseCase.getPopularMovies(1);
+      List<MovieEntity> movies = apiCallResult["movies"];
       if (movies.isEmpty) {
         yield PopularMoviesNoData(message: "No Data");
       } else {

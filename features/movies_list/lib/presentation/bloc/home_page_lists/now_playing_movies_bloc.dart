@@ -28,8 +28,9 @@ class NowPlayingMoviesBloc
   Stream<NowPlayingMoviesState> _loadNowPlayingMovies() async* {
     try {
       yield NowPlayingMoviesLoading();
-      List<MovieEntity> movies =
-          await moviesUseCase.getNowPlayingMovies(1) as List<MovieEntity>;
+      Map<String, dynamic> apiCallResult =
+          await moviesUseCase.getNowPlayingMovies(1);
+      List<MovieEntity> movies = apiCallResult["movies"];
       if (movies.isEmpty) {
         yield NowPlayingMoviesNoData(message: "No Data");
       } else {
