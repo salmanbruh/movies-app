@@ -9,6 +9,7 @@ import 'package:movies_list/data/datasources/movies_data_source.dart';
 import 'package:movies_list/data/repositories/movies_repository_impl.dart';
 import 'package:movies_list/domain/repositories/movies_repository.dart';
 import 'package:movies_list/domain/usecases/movies_usecase.dart';
+import 'package:movies_list/movies_list.dart';
 import 'package:shared/common/common.dart';
 
 class AppModule extends Module {
@@ -41,6 +42,10 @@ class AppModule extends Module {
         ModuleRoute(
           Modular.get<NamedRoutes>().root,
           module: FeatureMovieDetailsModule(),
+        ),
+        ModuleRoute(
+          Modular.get<NamedRoutes>().moviesList,
+          module: FeatureMoviesListModule(),
         )
       ];
 }

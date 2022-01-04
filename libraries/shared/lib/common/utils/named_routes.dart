@@ -10,7 +10,7 @@ class NamedRoutes {
 
   // Movies List
   String moviesList = "/movies/list";
-  String moviesListCategory = "/:category";
+  String moviesListNowPlaying = "/now_playing";
 
   // Movie Details
   String movies = "/movies";

@@ -24,7 +24,10 @@ class _HomeNowPlayingMoviesListState extends State<HomeNowPlayingMoviesList> {
           Modular.get<NowPlayingMoviesBloc>()..add(NowPlayingMoviesLoadData()),
       child: HomeMoviesCategoriesList(
         categoryName: "Now Playing",
-        viewAllOnTapFunction: () {},
+        viewAllOnTapFunction: () => Modular.to.pushNamed(
+          Modular.get<NamedRoutes>().moviesList +
+              Modular.get<NamedRoutes>().moviesListNowPlaying,
+        ),
         list: _nowPlayingList(context),
       ),
     );

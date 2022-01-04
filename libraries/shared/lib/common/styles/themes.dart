@@ -84,6 +84,10 @@ ThemeData theme = ThemeData(
     iconTheme: IconThemeData(
       color: Modular.get<ColorPalettes>().lightPrimary,
     ),
+    titleTextStyle: const TextStyle(
+      color: Colors.white,
+      fontSize: 18,
+    ),
   ),
   textTheme: _textTheme,
   buttonTheme: ButtonThemeData(
