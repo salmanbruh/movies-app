@@ -6,6 +6,7 @@ class MovieEntity extends Equatable {
   final List<dynamic> genres;
   final String title;
   final String overview;
+  final double popularity;
   final String posterPath;
   final String releaseDate;
   final int runtime;
@@ -16,6 +17,7 @@ class MovieEntity extends Equatable {
     required this.genres,
     required this.title,
     required this.overview,
+    required this.popularity,
     required this.posterPath,
     required this.releaseDate,
     required this.runtime,
@@ -40,6 +42,7 @@ class MovieEntity extends Equatable {
         genres: movieResultModel.genres,
         title: movieResultModel.title,
         overview: movieResultModel.overview,
+        popularity: movieResultModel.popularity,
         posterPath: movieResultModel.posterPath,
         releaseDate: movieResultModel.releaseDate,
         runtime: movieResultModel.runtime,

@@ -16,6 +16,9 @@ class MovieResultModel {
   @JsonKey(name: "overview", defaultValue: "")
   final String overview;
 
+  @JsonKey(name: "popularity")
+  final double popularity;
+
   @JsonKey(name: "poster_path")
   final String posterPath;
 
@@ -33,6 +36,7 @@ class MovieResultModel {
     required this.genres,
     required this.title,
     required this.overview,
+    required this.popularity,
     required this.posterPath,
     required this.releaseDate,
     required this.runtime,
