@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_list/domain/domain.dart';
+import 'package:shared/common/common.dart';
 
 class ViewAllListMovieCard extends StatelessWidget {
   final MovieEntity movie;
@@ -19,11 +21,17 @@ class ViewAllListMovieCard extends StatelessWidget {
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       height: ImageSizeConstants.viewAllPosterHeight,
-      child: Row(
-        children: [
-          _buildPoster(context),
-          _buildMovieDetails(context),
-        ],
+      child: InkWell(
+        onTap: () => Modular.to.pushNamed(
+          Modular.get<NamedRoutes>().movies + "/${movie.id}",
+          arguments: movie,
+        ),
+        child: Row(
+          children: [
+            _buildPoster(context),
+            _buildMovieDetails(context),
+          ],
+        ),
       ),
     );
   }
