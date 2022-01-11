@@ -1,22 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:movies_list/domain/domain.dart';
 import 'package:movies_list/domain/usecases/movies_usecase.dart';
-import 'package:stream_transform/stream_transform.dart';
+import 'throttle_dropabble.dart';
 
 part 'all_now_playing_movies_list_event.dart';
 part 'all_now_playing_movies_list_state.dart';
-
-const throttleDuration = Duration(milliseconds: 100);
-
-EventTransformer<E> throttleDroppable<E>(Duration duration) {
-  return (events, mapper) {
-    return droppable<E>().call(events.throttle(duration), mapper);
-  };
-}
 
 class AllNowPlayingMoviesListBloc
     extends Bloc<AllNowPlayingMoviesListEvent, AllNowPlayingMoviesListState> {
