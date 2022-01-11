@@ -4,6 +4,7 @@ class ImageUrlConstants {
 }
 
 class ImageSizeUrlConstants {
+  static String baseViewAllPosterSizeUrl = "/w92";
   static String baseHomePosterSizeUrl = "/w154";
   static String baseDetailsPosterSizeUrl = "/w500";
 }
@@ -11,4 +12,7 @@ class ImageSizeUrlConstants {
 class ImageSizeConstants {
   static double homePosterWidth = 154;
   static double homePosterHeight = 232;
+
+  static double viewAllPosterWidth = 92;
+  static double viewAllPosterHeight = 154;
 }
