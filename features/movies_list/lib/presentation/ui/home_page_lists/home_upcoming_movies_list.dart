@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movies_list/domain/domain.dart';
 import 'package:movies_list/presentation/bloc/blocs.dart';
 import 'package:movies_list/presentation/ui/movies_lists.dart';
+import 'package:shared/common/utils/utils.dart';
 import 'package:shared/widget/widget.dart';
 
 class HomeUpcomingMoviesList extends StatefulWidget {
@@ -21,7 +22,10 @@ class _HomeUpcomingMoviesListState extends State<HomeUpcomingMoviesList> {
           Modular.get<UpcomingMoviesBloc>()..add(UpcomingMoviesLoadData()),
       child: HomeMoviesCategoriesList(
         categoryName: "Upcoming",
-        viewAllOnTapFunction: () {},
+        viewAllOnTapFunction: () => Modular.to.pushNamed(
+          Modular.get<NamedRoutes>().moviesList +
+              Modular.get<NamedRoutes>().moviesListUpcoming,
+        ),
         list: _upcomingMoviesList(context),
       ),
     );

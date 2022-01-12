@@ -11,6 +11,7 @@ class NamedRoutes {
   // Movies List
   String moviesList = "/movies/list";
   String moviesListNowPlaying = "/now_playing";
+  String moviesListUpcoming = "/upcoming";
 
   // Movie Details
   String movies = "/movies";
