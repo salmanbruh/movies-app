@@ -13,6 +13,8 @@ class FeatureMoviesListModule extends Module {
             moviesUseCase: Modular.get<MoviesUseCase>())),
         Bind((_) =>
             PopularMoviesListBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
+        Bind((_) => TopRatedMoviesListBloc(
+            moviesUseCase: Modular.get<MoviesUseCase>())),
       ];
 
   @override
@@ -28,6 +30,10 @@ class FeatureMoviesListModule extends Module {
         ChildRoute(
           Modular.get<NamedRoutes>().moviesListPopular,
           child: (context, args) => const PopularAllListPage(),
-        )
+        ),
+        ChildRoute(
+          Modular.get<NamedRoutes>().moviesListTopRated,
+          child: (context, args) => const TopRatedAllListPage(),
+        ),
       ];
 }

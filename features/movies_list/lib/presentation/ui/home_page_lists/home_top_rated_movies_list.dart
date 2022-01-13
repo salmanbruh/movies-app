@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/presentation/bloc/blocs.dart';
 import 'package:movies_list/presentation/ui/movies_lists.dart';
+import 'package:shared/common/common.dart';
 import 'package:shared/widget/widget.dart';
 
 class HomeTopRatedMoviesList extends StatefulWidget {
@@ -21,7 +22,10 @@ class _HomeTopRatedMoviesListState extends State<HomeTopRatedMoviesList> {
           Modular.get<TopRatedMoviesBloc>()..add(TopRatedMoviesLoadData()),
       child: HomeMoviesCategoriesList(
         categoryName: "Top Rated",
-        viewAllOnTapFunction: () {},
+        viewAllOnTapFunction: () => Modular.to.pushNamed(
+          Modular.get<NamedRoutes>().moviesList +
+              Modular.get<NamedRoutes>().moviesListTopRated,
+        ),
         list: _topRatedMoviesList(context),
       ),
     );
