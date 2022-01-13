@@ -6,4 +6,5 @@ abstract class MoviesRepository {
   Future<Map<String, dynamic>> getTopRatedMovies(int page);
   Future<Map<String, dynamic>> getUpcomingMovies(int page);
   Future<MovieEntity> getMovieDetails(int movieId);
+  Future<Map<String, dynamic>> searchMovie(String query, int page);
 }

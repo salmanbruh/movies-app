@@ -7,6 +7,7 @@ abstract class MoviesUseCase {
   Future<Map<String, dynamic>> getTopRatedMovies(int page);
   Future<Map<String, dynamic>> getUpcomingMovies(int page);
   Future<MovieEntity> getMovieDetails(int movieId);
+  Future<Map<String, dynamic>> searchMovie(String query, int page);
 }
 
 class MoviesUseCaseImpl extends MoviesUseCase {
@@ -33,4 +34,8 @@ class MoviesUseCaseImpl extends MoviesUseCase {
   @override
   Future<MovieEntity> getMovieDetails(int movieId) =>
       moviesRepository.getMovieDetails(movieId);
+
+  @override
+  Future<Map<String, dynamic>> searchMovie(String query, int page) =>
+      moviesRepository.searchMovie(query, page);
 }

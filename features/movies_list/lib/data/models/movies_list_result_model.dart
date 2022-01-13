@@ -8,11 +8,15 @@ class MoviesListResultModel {
   @JsonKey(name: "results")
   final List<MovieResultModel> movies;
 
+  @JsonKey(name: "page")
+  final int page;
+
   @JsonKey(name: "total_pages")
   final int totalPages;
 
   MoviesListResultModel({
     required this.movies,
+    required this.page,
     required this.totalPages,
   });
 

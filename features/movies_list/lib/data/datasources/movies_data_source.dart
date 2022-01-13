@@ -10,6 +10,7 @@ abstract class MoviesDataSource {
   Future<MoviesListResultModel> getTopRatedMovies(int page);
   Future<MoviesListResultModel> getUpcomingMovies(int page);
   Future<MovieResultModel> getMovieDetails(int movieId);
+  Future<MoviesListResultModel> searchMovie(String query, int page);
 }
 
 class TmdbMoviesUrl {
@@ -18,6 +19,7 @@ class TmdbMoviesUrl {
   static String topRatedMovies = "/movie/top_rated";
   static String upcomingMovies = "/movie/upcoming";
   static String movieDetails = "/movie";
+  static String searchMovie = "/search/movie";
 }
 
 class TmdbApi extends MoviesDataSource {
@@ -100,6 +102,23 @@ class TmdbApi extends MoviesDataSource {
       );
 
       return MovieResultModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return e.error;
+    }
+  }
+
+  @override
+  Future<MoviesListResultModel> searchMovie(String query, int page) async {
+    try {
+      Response response = await dioClient.dio.get(
+        TmdbMoviesUrl.searchMovie,
+        queryParameters: {
+          "api_key": Keys.tmdbKey,
+          "query": query,
+        },
+      );
+
+      return MoviesListResultModel.fromJson(response.data);
     } on DioError catch (e) {
       return e.error;
     }
