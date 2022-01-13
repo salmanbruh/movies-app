@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movies_list/domain/entities/movies_entity.dart';
 import 'package:movies_list/presentation/bloc/blocs.dart';
 import 'package:movies_list/presentation/ui/movies_lists.dart';
+import 'package:shared/common/common.dart';
 import 'package:shared/widget/widget.dart';
 
 class HomePopularMoviesList extends StatefulWidget {
@@ -21,7 +22,10 @@ class _HomePopularMoviesListState extends State<HomePopularMoviesList> {
           Modular.get<PopularMoviesBloc>()..add(PopularMoviesLoadData()),
       child: HomeMoviesCategoriesList(
         categoryName: "Popular",
-        viewAllOnTapFunction: () {},
+        viewAllOnTapFunction: () => Modular.to.pushNamed(
+          Modular.get<NamedRoutes>().moviesList +
+              Modular.get<NamedRoutes>().moviesListPopular,
+        ),
         list: _popularMoviesList(context),
       ),
     );
