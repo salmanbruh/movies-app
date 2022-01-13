@@ -10,7 +10,14 @@ class PopularAllListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return BlocProvider(
+      create: (context) =>
+          Modular.get<PopularMoviesListBloc>()..add(PopularMoviesListFetched()),
+      child: const ViewAllListPage(
+        categoryName: "Popular",
+        list: PopularAllListView(),
+      ),
+    );
   }
 }
 

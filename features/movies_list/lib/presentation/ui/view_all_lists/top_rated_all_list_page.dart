@@ -11,8 +11,12 @@ class TopRatedAllListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Modular.get<TopRatedMoviesListBloc>(),
-      child: const TopRatedAllListView(),
+      create: (context) => Modular.get<TopRatedMoviesListBloc>()
+        ..add(TopRatedMoviesListFetched()),
+      child: const ViewAllListPage(
+        list: TopRatedAllListView(),
+        categoryName: "Top Rated",
+      ),
     );
   }
 }
