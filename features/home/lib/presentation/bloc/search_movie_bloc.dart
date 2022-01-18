@@ -49,7 +49,6 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
         );
       }
     } catch (e) {
-      debugPrint(e.toString());
       emit(state.copyWith(status: SearchMovieStatus.failure));
     }
   }
