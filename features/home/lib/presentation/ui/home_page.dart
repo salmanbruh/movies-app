@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:favorites_list/favorites_list.dart';
+import 'package:home/presentation/bloc/search_movie_bloc.dart';
+import 'package:home/presentation/ui/movie_search_delegate.dart';
 import 'package:movies_list/presentation/ui/movies_lists.dart';
 import 'package:nav_drawer/nav_drawer.dart';
 import 'package:nav_drawer/presentation/bloc/appdrawer_bloc.dart';
@@ -13,22 +16,56 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppdrawerBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppdrawerBloc(),
+        ),
+        BlocProvider(
+          create: (context) => Modular.get<SearchMovieBloc>(),
+        )
+      ],
       child: Scaffold(
         appBar: AppBar(
-          actions: const [
+          actions: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Icon(Icons.search),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: IconButton(
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: MovieSearch(
+                      scrollController: _scrollController,
+                      searchMovieBloc: Modular.get<SearchMovieBloc>(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.search),
+              ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: Icon(Icons.notifications),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(8, 0, 16, 0),
               child: Icon(Icons.person),
             )
@@ -47,5 +84,18 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _onScroll() {
+    if (_isBottom) {
+      Modular.get<SearchMovieBloc>().add(LoadNextResults());
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * 0.9);
   }
 }

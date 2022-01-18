@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:movies_list/domain/domain.dart';
 import 'package:movies_list/domain/usecases/movies_usecase.dart';
@@ -21,6 +22,10 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
       _onLoadNextResults,
       transformer: throttleDroppable(throttleDuration),
     );
+    on<Clear>(
+      _onClear,
+      transformer: throttleDroppable(throttleDuration),
+    );
   }
 
   Future<void> _onSearch(
@@ -29,7 +34,7 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
   ) async {
     try {
       if (state.query != event.query) {
-        double nextPage = state.currentPage;
+        double nextPage = state.currentPage + 1;
         Map<String, dynamic> apiCallResult =
             await moviesUseCase.searchMovie(event.query, nextPage.toInt());
         emit(
@@ -43,6 +48,7 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
         );
       }
     } catch (e) {
+      debugPrint(e.toString());
       emit(state.copyWith(status: SearchMovieStatus.failure));
     }
   }
@@ -52,7 +58,7 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
     Emitter<SearchMovieState> emit,
   ) async {
     try {
-      if (event.query == state.query) {
+      if (state.query != "") {
         double nextPage = state.currentPage + 1;
         Map<String, dynamic> apiCallResult = await moviesUseCase.searchMovie(
           state.query,
@@ -70,5 +76,12 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
     } catch (e) {
       emit(state.copyWith(status: SearchMovieStatus.failure));
     }
+  }
+
+  Future<void> _onClear(
+    Clear event,
+    Emitter<SearchMovieState> emit,
+  ) async {
+    return emit(const SearchMovieState());
   }
 }

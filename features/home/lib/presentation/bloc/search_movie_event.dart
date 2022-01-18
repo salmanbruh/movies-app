@@ -13,10 +13,11 @@ class Search extends SearchMovieEvent {
 }
 
 class LoadNextResults extends SearchMovieEvent {
-  final String query;
-
-  LoadNextResults({required this.query});
-
   @override
-  List<Object?> get props => [query];
+  List<Object?> get props => [];
+}
+
+class Clear extends SearchMovieEvent {
+  @override
+  List<Object?> get props => [];
 }

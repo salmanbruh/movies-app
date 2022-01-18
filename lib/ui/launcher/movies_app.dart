@@ -2,6 +2,7 @@ import 'package:core/network/dio_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:home/home.dart';
+import 'package:home/presentation/bloc/search_movie_bloc.dart';
 import 'package:movie_details/movie_details.dart';
 import 'package:movies_app/ui/launcher/app_config.dart';
 import 'package:movies_app/ui/splash/splash_page.dart';
@@ -27,6 +28,8 @@ class AppModule extends Module {
             moviesDataSource: Modular.get<MoviesDataSource>())),
         Bind((_) => MoviesUseCaseImpl(
             moviesRepository: Modular.get<MoviesRepository>())),
+        Bind((_) =>
+            SearchMovieBloc(moviesUseCase: Modular.get<MoviesUseCase>())),
       ];
 
   @override

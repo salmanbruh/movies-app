@@ -39,25 +39,33 @@ class ViewAllListMovieCard extends StatelessWidget {
   Widget _buildPoster(BuildContext context) => SizedBox(
         width: ImageSizeConstants.viewAllPosterWidth,
         height: ImageSizeConstants.viewAllPosterHeight,
-        child: CachedNetworkImage(
-          imageUrl: AppConfig.of(context).baseImageUrl +
-              ImageSizeUrlConstants.baseViewAllPosterSizeUrl +
-              movie.posterPath,
-          imageBuilder: (context, imageProvider) => Container(
-            width: ImageSizeConstants.viewAllPosterWidth,
-            height: ImageSizeConstants.viewAllPosterHeight,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: imageProvider,
-                fit: BoxFit.cover,
+        child: movie.posterPath != ""
+            ? CachedNetworkImage(
+                imageUrl: AppConfig.of(context).baseImageUrl +
+                    ImageSizeUrlConstants.baseViewAllPosterSizeUrl +
+                    movie.posterPath,
+                imageBuilder: (context, imageProvider) => Container(
+                  width: ImageSizeConstants.viewAllPosterWidth,
+                  height: ImageSizeConstants.viewAllPosterHeight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              )
+            : Container(
+                child: const Center(child: Text("No Image")),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-            ),
-          ),
-          placeholder: (context, url) =>
-              const Center(child: CircularProgressIndicator()),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
       );
 
   Widget _buildMovieDetails(BuildContext context) => Expanded(
@@ -86,9 +94,11 @@ class ViewAllListMovieCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                DateFormat("MMM dd, yyyy").format(
-                  DateTime.parse(movie.releaseDate),
-                ),
+                movie.releaseDate != ""
+                    ? DateFormat("MMM dd, yyyy").format(
+                        DateTime.parse(movie.releaseDate),
+                      )
+                    : "-",
               ),
             ],
           ),
