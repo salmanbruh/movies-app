@@ -42,21 +42,33 @@ class HomePageMovieCard extends StatelessWidget {
   Widget _buildPosterImage(BuildContext context, MovieEntity movie) => SizedBox(
         height: ImageSizeConstants.homePosterHeight,
         child: Center(
-          child: CachedNetworkImage(
-            imageUrl: AppConfig.of(context).baseImageUrl +
-                ImageSizeUrlConstants.baseHomePosterSizeUrl +
-                movie.posterPath,
-            imageBuilder: (context, imageProvider) => Container(
-              width: ImageSizeConstants.homePosterWidth,
-              height: ImageSizeConstants.homePosterHeight,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-              ),
-            ),
-            placeholder: (context, url) => const CircularProgressIndicator(),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
-          ),
+          child: movie.posterPath != ""
+              ? CachedNetworkImage(
+                  imageUrl: AppConfig.of(context).baseImageUrl +
+                      ImageSizeUrlConstants.baseHomePosterSizeUrl +
+                      movie.posterPath,
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: ImageSizeConstants.homePosterWidth,
+                    height: ImageSizeConstants.homePosterHeight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: imageProvider, fit: BoxFit.cover),
+                    ),
+                  ),
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )
+              : Container(
+                  child: const Text("No Image"),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
         ),
       );
 

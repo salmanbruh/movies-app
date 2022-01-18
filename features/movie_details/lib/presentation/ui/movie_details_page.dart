@@ -115,22 +115,26 @@ class MovieDetailsSuccess extends StatelessWidget {
   Widget _buildImage(BuildContext context) => Stack(
         children: [
           Center(
-            child: CachedNetworkImage(
-              imageUrl: AppConfig.of(context).baseImageUrl +
-                  ImageSizeUrlConstants.baseDetailsPosterSizeUrl +
-                  movie.posterPath,
-              imageBuilder: (context, imageProvider) => Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  // borderRadius: BorderRadius.circular(150),
-                ),
-              ),
-              placeholder: (context, url) => const CircularProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
+            child: movie.posterPath != ""
+                ? CachedNetworkImage(
+                    imageUrl: AppConfig.of(context).baseImageUrl +
+                        ImageSizeUrlConstants.baseDetailsPosterSizeUrl +
+                        movie.posterPath,
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.fitWidth,
+                        ),
+                        // borderRadius: BorderRadius.circular(150),
+                      ),
+                    ),
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  )
+                : const Text("No Image"),
           ),
           Container(
             decoration: BoxDecoration(
