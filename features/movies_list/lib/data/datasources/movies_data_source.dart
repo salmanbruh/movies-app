@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:core/network/dio_client.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:movies_list/data/models/movie_result_model.dart';
 import 'package:movies_list/data/models/movies_list_result_model.dart';
 import 'package:shared/common/common.dart';
@@ -115,6 +116,7 @@ class TmdbApi extends MoviesDataSource {
         queryParameters: {
           "api_key": Keys.tmdbKey,
           "query": query,
+          "page": page,
         },
       );
 

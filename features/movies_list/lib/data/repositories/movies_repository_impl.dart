@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:movies_list/data/datasources/movies_data_source.dart';
 import 'package:movies_list/data/models/movie_result_model.dart';
 import 'package:movies_list/data/models/movies_list_result_model.dart';
@@ -104,6 +105,7 @@ class MoviesRepositoryImpl extends MoviesRepository {
   Future<Map<String, dynamic>> searchMovie(String query, int page) async {
     MoviesListResultModel moviesListResultModel =
         await moviesDataSource.searchMovie(query, page);
+    debugPrint(moviesListResultModel.toString());
     List<MovieEntity> movieEntities =
         _extractMovieEntities(moviesListResultModel);
     return _apiCallResult(

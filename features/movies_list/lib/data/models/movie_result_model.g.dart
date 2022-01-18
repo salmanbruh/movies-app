@@ -10,13 +10,13 @@ MovieResultModel _$MovieResultModelFromJson(Map<String, dynamic> json) =>
     MovieResultModel(
       id: json['id'] as int,
       genres: json['genres'] as List<dynamic>? ?? [],
-      title: json['title'] as String,
+      title: json['title'] as String? ?? '',
       overview: json['overview'] as String? ?? '',
-      popularity: (json['popularity'] as num).toDouble(),
-      posterPath: json['poster_path'] as String,
-      releaseDate: json['release_date'] as String,
+      popularity: (json['popularity'] as num?)?.toDouble() ?? 0,
+      posterPath: json['poster_path'] as String? ?? '',
+      releaseDate: json['release_date'] as String? ?? '',
       runtime: json['runtime'] as int? ?? 0,
-      voteAverage: (json['vote_average'] as num).toDouble(),
+      voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
     );
 
 Map<String, dynamic> _$MovieResultModelToJson(MovieResultModel instance) =>

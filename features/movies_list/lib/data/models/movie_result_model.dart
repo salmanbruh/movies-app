@@ -10,25 +10,25 @@ class MovieResultModel {
   @JsonKey(name: "genres", defaultValue: [])
   final List<dynamic> genres;
 
-  @JsonKey(name: "title")
+  @JsonKey(name: "title", defaultValue: "")
   final String title;
 
   @JsonKey(name: "overview", defaultValue: "")
   final String overview;
 
-  @JsonKey(name: "popularity")
+  @JsonKey(name: "popularity", defaultValue: 0)
   final double popularity;
 
-  @JsonKey(name: "poster_path")
+  @JsonKey(name: "poster_path", defaultValue: "")
   final String posterPath;
 
-  @JsonKey(name: "release_date")
+  @JsonKey(name: "release_date", defaultValue: "")
   final String releaseDate;
 
   @JsonKey(name: "runtime", defaultValue: 0)
   final int runtime;
 
-  @JsonKey(name: "vote_average")
+  @JsonKey(name: "vote_average", defaultValue: 0)
   final double voteAverage;
 
   MovieResultModel({
