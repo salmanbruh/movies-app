@@ -54,7 +54,8 @@ class _HomePageState extends State<HomePage> {
                     context: context,
                     delegate: MovieSearch(
                       scrollController: _scrollController,
-                      searchMovieBloc: Modular.get<SearchMovieBloc>(),
+                      searchMovieBloc: Modular.get<SearchMovieBloc>()
+                        ..add(Clear()),
                     ),
                   );
                 },

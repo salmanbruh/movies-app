@@ -34,6 +34,7 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
   ) async {
     try {
       if (state.query != event.query) {
+        emit(const SearchMovieState());
         double nextPage = 1;
         Map<String, dynamic> apiCallResult =
             await moviesUseCase.searchMovie(event.query, nextPage.toInt());
