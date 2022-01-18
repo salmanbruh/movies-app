@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
               child: IconButton(
                 onPressed: () {
                   showSearch(
