@@ -10,6 +10,7 @@ class AppConfig extends InheritedWidget {
   final String appName;
   final String description;
   final String baseUrl;
+  final String baseImageUrl;
   final ThemeData themeData;
   final Widget app;
 
@@ -18,13 +19,14 @@ class AppConfig extends InheritedWidget {
     required this.appName,
     required this.description,
     required this.baseUrl,
+    required this.baseImageUrl,
     required this.themeData,
     required this.app,
     Key? key,
   }) : super(key: key, child: app);
 
-  static AppConfig? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AppConfig>();
+  static AppConfig of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<AppConfig>() as AppConfig;
   }
 
   @override

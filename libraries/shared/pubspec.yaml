@@ -11,7 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  movies_app:
+    path: ../..
   
+  movies_list:
+    path: ../../features/movies_list
+
+  core:
+    path: ../core
   dependencies:
     path: ../dependencies
 
