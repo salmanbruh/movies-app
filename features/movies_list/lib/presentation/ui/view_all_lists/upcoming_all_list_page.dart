@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movies_list/presentation/bloc/view_all_lists/upcoming_movies_list_bloc.dart';
 import 'package:movies_list/presentation/ui/movies_lists.dart';
-import 'package:movies_list/presentation/ui/view_all_lists/view_all_list.dart';
 import 'package:shared/widget/view_all_list_movie_card.dart';
 
 class UpcomingAllListPage extends StatelessWidget {
